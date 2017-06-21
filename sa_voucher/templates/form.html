@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SA Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <script>
+      window.onload = function() {
+        $('.datepicker')
+        .attr('type', 'text')
+        .datepicker({
+        dateFormat: 'mm/dd/y'
+      });
+        document.getElementById('transferpayment').style.display = "none";
+        document.getElementById('pub').style.display = "none";
+        document.getElementById('personalservicefor?').style.display = "none";
+        document.getElementById('paymenttype').style.display = "none";
+      }
+
+      function showdeliverytype(select){
+       if(select.value=='Nothing'){
+          document.getElementById('pub').style.display = "none";
+          document.getElementById('transferpayment').style.display = "none";
+          document.getElementById('paymenttype').style.display = "none";
+        }
+       else if (select.value=='Transfer') {
+         document.getElementById('pub').style.display = "none";
+         document.getElementById('paymenttype').style.display = "none";
+         document.getElementById('transferpayment').style.display = "block";
+       }
+       else if (select.value=='Vendor Payment' || select.value=='Reimbursement') {
+         document.getElementById('pub').style.display = "none";
+         document.getElementById('paymenttype').style.display = "block";
+         document.getElementById('transferpayment').style.display = "none";
+       }
+     }
+
+     function showpaymenttype(select){
+       if(select.value=='Nothing' || select.value=='Mail To Payee'){
+         document.getElementById('pub').style.display = "none";
+       }
+       else if(select.value=='Pick Up By'){
+         document.getElementById('pub').style.display = "block";
+       }
+
+     }
+
+
+    function selectpservice(select){
+       if(select.value=="No"){
+          document.getElementById('personalservicefor?').style.display = "none";
+        }
+       else if (select.value=="Yes") {
+         document.getElementById('personalservicefor?').style.display = "block";
+       }
+      }
+  </script>
+
+  </head>
+
+
+  <body>
+    <div class="text-center">
+        <img src="{%static "images/SA_Logo_Voucher.png"%}" class="rounded" style="padding:1em;">
+    </div>
+    <form method="POST">
+      <div class="container" style="background-color:#D3D3D3;padding:1em;">
+      <label for="selectorganizationlabel">Select your organization</label>
+          <select id="yourOrganization" class="form-control" name="selectorganization">
+              <option value='0000'></option>
+              <option value="1000">1000 SA Operating Account</option>
+              <option value="1001">1001 SA Payroll</option>
+              <option value="4000">4000 Black Dance Repertoire</option>
+              <option value="4010">4010 Student Psychological Association</option>
+              <option value="4020">4020 Animation Club</option>
+              <option value="4030">4030 Binghamton Crosbys</option>
+              <option value="4040">4040 Black Student Union</option>
+              <option value="4050">4050 Mock Trial Club</option>
+              <option value="4060">4060 American Society of Mechanical Engineering</option>
+              <option value="4100">4100 Harpur Harpeggios</option>
+              <option value="4160">4160 Harpur's Ferry Student Volunteer Ambulance</option>
+              <option value="4170">4170 High Hopes Crisis Intervention</option>
+              <option value="4200">4200 Circle K</option>
+              <option value="4210">4210 ESCAPE Bus Company</option>
+              <option value="4220">4220 Latin American Student Union</option>
+              <option value="4250">4250 Ballroom Dance Association</option>
+              <option value="4260">4260 Explorchestra</option>
+              <option value="4270">4270 Pipe Dream</option>
+              <option value="4290">4290 Pre-Medical Association</option>
+              <option value="4300">4300 Hillel-Jewish Student Union</option>
+              <option value="4320">4320 Candid Photography Club</option>
+              <option value="4330">4330 Fashion Industry Club</option>
+              <option value="4340">4340 Rhythm Method</option>
+              <option value="4360">4360 Hindu Student Council</option>
+              <option value="4370">4370 Harpur Jazz Project</option>
+              <option value="4390">4390 Bert Mitchell Minority Management</option>
+              <option value="4430">4430 Rotaract</option>
+              <option value="4440">4440 Piano Society</option>
+              <option value="4450">4450 Equality Project (The)</option>
+              <option value="4470">4470 Harpur Radio Workshop</option>
+              <option value="4490">4490 Women's Student Union</option>
+              <option value="4530">4530 College In The Woods Council</option>
+              <option value="4540">4540 Hinman College Council</option>
+              <option value="4550">4550 Newing College Council</option>
+              <option value="4560">4560 Off Campus College Community (OC3)</option>
+              <option value="4570">4570 New York Public Interest Research Group</option>
+              <option value="4575">4575 One World</option>
+              <option value="4590">4590 Dickinson Town Council</option>
+              <option value="4600">4600 Undergraduate Anthropology Organization</option>
+              <option value="4610">4610 Rainbow Pride Union</option>
+              <option value="4620">4620 Hellenic Cultural Society</option>
+              <option value="4640">4640 Psi Chi, National Honor Society</option>
+              <option value="4650">4650 Art Co-op</option>
+              <option value="4660">4660 African Student Organization</option>
+              <option value="4675">4675 Alzheimer's Foundation of America On Campus</option>
+              <option value="4680">4680 Pre-Optometry Association</option>
+              <option value="4700">4700 Caribbean Student Association</option>
+              <option value="4710">4710 Cosplay Club</option>
+              <option value="4715">4715 Helping Chintsa</option>
+              <option value="4720">4720 Pakistani Students Association</option>
+              <option value="4725">4725 The Pappy Parker Players</option>
+              <option value="4730">4730 OCC Transport</option>
+              <option value="4740">4740 Partners in Health</option>
+              <option value="4750">4750 Nursing Students Association</option>
+              <option value="4760">4760 Student Volunteer Center</option>
+              <option value="4765">4765 History Club</option>
+              <option value="4770">4770 Zombie Student Association</option>
+              <option value="4780">4780 Hong Kong Exchange Square</option>
+              <option value="4790">4790 Powerful United Ladies Striving to Elevate</option>
+              <option value="4800">4800 Muslim Student Association</option>
+              <option value="4810">4810 Binghamton Television</option>
+              <option value="4820">4820 SUNY Kids</option>
+              <option value="4830">4830 Pre-Physician Assistant Society</option>
+              <option value="4870">4870 Women Empowered Support, Protect, Educate, Advocate and Know</option>
+              <option value="4910">4910 SHINE</option>
+              <option value="4920">4920 Students of Urban Planning</option>
+              <option value="4930">4930 Transfer Student Association</option>
+              <option value="5010">5010 German Club</option>
+              <option value="5015">5015 Get Reel Fishing Club</option>
+              <option value="5020">5020 Human Development Association</option>
+              <option value="5050">5050 Society for Human Resource Management</option>
+              <option value="5060">5060 Bhangra</option>
+              <option value="5065">5065 Billiards Club</option>
+              <option value="5090">5090 Undergraduate Chemical Society</option>
+              <option value="5100">5100 Korean Undergraduate Student Association</option>
+              <option value="5140">5140 MASTI</option>
+              <option value="5180">5180 Nutrition and Fitness Club</option>
+              <option value="5190">5190 Blacks, Latinos, Asians, & Caucasians Keeping Unity</option>
+              <option value="5200">5200 Media Group</option>
+              <option value="5210">5210 Diverse Cultural Excellence</option>
+              <option value="5220">5220 Tommorrow's Hope in North Korea</option>
+              <option value="5230">5230 Ascend</option>
+              <option value="5240">5240 Evolution Dance Company</option>
+              <option value="5250">5250 Tap That</option>
+              <option value="5260">5260 Biochemistry Club</option>
+              <option value="5270">5270 SUNY VINES</option>
+              <option value="5280">5280 Gaming Group</option>
+              <option value="5290">5290 Circus Arts Association</option>
+              <option value="5310">5310 Korean American Baptist Student Organization</option>
+              <option value="5320">5320 Korean American Christian Fellowship</option>
+              <option value="5330">5330 Sikh Association</option>
+              <option value="5370">5370 Scrabble Club</option>
+              <option value="5380">5380 Taste Buds</option>
+              <option value="5390">5390 SnoCats Ski & Snowboard Club</option>
+              <option value="5410">5410 College Republicans</option>
+              <option value="5430">5430 UNICEF</option>
+              <option value="5440">5440 Mountainview College Council</option>
+              <option value="5470">5470 Imagination Craft Works</option>
+              <option value="5480">5480 Binghamton Prospect Magazine</option>
+              <option value="5500">5500 Givology</option>
+              <option value="5510">5510 Sigma Alpha Lambda</option>
+              <option value="5515">5515 Binghamton Buddies</option>
+              <option value="5530">5530 Brothers and Sisters in Christ</option>
+              <option value="5550">5550 Casino in the Woods Committee</option>
+              <option value="5560">5560 Koinonia</option>
+              <option value="5610">5610 Irish Student Union</option>
+              <option value="5620">5620 Poker Club</option>
+              <option value="5650">5650 Chabad</option>
+              <option value="5670">5670 Intervarsity Christian Fellow</option>
+              <option value="5690">5690 Student Design Agency</option>
+              <option value="5720">5720 Turkish Culture Association</option>
+              <option value="5740">5740 Association of Latino Professionals in Finance and Accountin</option>
+              <option value="5745">5745 Astronomy Club</option>
+              <option value="5779">5779 APICS - Association for Operations Mgmt</option>
+              <option value="5780">5780 International Entertainment Club</option>
+              <option value="5790">5790 Sul Poong</option>
+              <option value="5810">5810 Model United Nations Team</option>
+              <option value="5820">5820 Pep Band</option>
+              <option value="5825">5825 Engineering World Health</option>
+              <option value="5825">5825 Engineering World Health</option>
+              <option value="5830">5830 Enactus</option>
+              <option value="5850">5850 Engineers Without Borders</option>
+              <option value="5940">5940 Treblemakers</option>
+              <option value="5950">5950 Meor</option>
+              <option value="5970">5970 Colleges Against Cancer</option>
+              <option value="6070">6070 Intramural Sports</option>
+              <option value="6080">6080 Russian Student Union</option>
+              <option value="6110">6110 Habitat For Humanity</option>
+              <option value="6140">6140 Binghamton Vibrations</option>
+              <option value="6150">6150 Asian Student Union</option>
+              <option value="6170">6170 Chinese Christian Fellowship</option>
+              <option value="6190">6190 Charles Drew Minority Pre-Health Society</option>
+              <option value="6210">6210 Animal Alliance</option>
+              <option value="6220">6220 Susquehanna Community Council</option>
+              <option value="6230">6230 No Strings Attached</option>
+              <option value="6250">6250 Indian InternationaI Student Union</option>
+              <option value="6260">6260 Math Club</option>
+              <option value="6290">6290 Convocations</option>
+              <option value="6310">6310 Informations Systems Club</option>
+              <option value="6330">6330 Semper Fi Society</option>
+              <option value="6360">6360 American Red Cross Club</option>
+              <option value="6380">6380 Dzidefo Africa Choir</option>
+              <option value="6390">6390 Collectible Card Game Association</option>
+              <option value="6400">6400 Senior Class Council</option>
+              <option value="6410">6410 Junior Class Council</option>
+              <option value="6420">6420 Sophmore Class Council</option>
+              <option value="6430">6430 Freshman Class Council</option>
+              <option value="6440">6440 Finance Society</option>
+              <option value="6510">6510 Mary E. Mahoney Nursing Support Group</option>
+              <option value="6530">6530 Chess Club</option>
+              <option value="6550">6550 Hilarity for Charity</option>
+              <option value="6580">6580 Pre-Veterinary Society</option>
+              <option value="6590">6590 College Democrats</option>
+              <option value="6610">6610 Institute of Electrical and Electronics Engineers</option>
+              <option value="6630">6630 French Club</option>
+              <option value="6650">6650 Gospel Choir</option>
+              <option value="6660">6660 Ellipsis Literary Magazine</option>
+              <option value="6670">6670 Italian Club</option>
+              <option value="6690">6690 Student Environmental Action Coalition</option>
+              <option value="6710">6710 Stand Up</option>
+              <option value="6720">6720 International Flag Dancers</option>
+              <option value="6800">6800 Amnesty International</option>
+              <option value="6840">6840 Haitian Student Association</option>
+              <option value="6850">6850 Friendly Lunch</option>
+              <option value="6860">6860 Binghamton Review</option>
+              <option value="6880">6880 Guitar Club</option>
+              <option value="6910">6910 Speech and Debate</option>
+              <option value="6920">6920 Student United Way of Binghamton</option>
+              <option value="6990">6990 Actuarial Association</option>
+              <option value="7040">7040 Personal Finance Association</option>
+              <option value="7050">7050 National Society of Black Engineers</option>
+              <option value="7070">7070 Society of Asian Scientists and Engineers</option>
+              <option value="7080">7080 Philosophy of Science Club</option>
+              <option value="7090">7090 Chinascope</option>
+              <option value="7130">7130 Binghamtonics</option>
+              <option value="7140">7140 Economics Club</option>
+              <option value="7160">7160 Food Co-Op</option>
+              <option value="7170">7170 International Connection</option>
+              <option value="7180">7180 Live Action Role Playing Club</option>
+              <option value="7200">7200 College Progressives</option>
+              <option value="7220">7220 Society of Hispanic Professional Engineers</option>
+              <option value="7240">7240 Team Sunrise</option>
+              <option value="7270">7270 KnitWits</option>
+              <option value="7280">7280 Origami Club</option>
+              <option value="7290">7290 X=Factor Step Team</option>
+              <option value="7300">7300 Spanish Club</option>
+              <option value="7310">7310 Secular Student Alliance</option>
+              <option value="7315">7315 S.E.L.F.</option>
+              <option value="7330">7330 Nukporfe African Dance - Drumm</option>
+              <option value="7350">7350 March of Dimes</option>
+              <option value="7360">7360 Pre Dental Association</option>
+              <option value="7370">7370 Poverty Awareness Coalition</option>
+              <option value="7380">7380 Hillside Village Council</option>
+              <option value="7400">7400 Binghamton Sound Stage & Lighting</option>
+              <option value="7420">7420 Thurgood Marshall Pre-Law Soc.</option>
+              <option value="7450">7450 Society of Automotive Engineers</option>
+              <option value="7480">7480 Juvenile Urban Multiculture Program</option>
+              <option value="7520">7520 Society of Women Engineers</option>
+              <option value="7530">7530 Neuroscience Club</option>
+              <option value="7540">7540 Newman Association</option>
+              <option value="7570">7570 Club Sports</option>
+              <option value="7590">7590 Late Night Binghamton</option>
+              <option value="7610">7610 BU Association of Mixed Students</option>
+              <option value="7620">7620 BU Zoo (The)</option>
+              <option value="7640">7640 Philosophy Club</option>
+              <option value="7660">7660 Global Education Investment</option>
+              <option value="7810">7810 Democracy Matters</option>
+              <option value="7840">7840 Campus Climate Challenge</option>
+              <option value="7850">7850 College Libertarians</option>
+              <option value="7880">7880 Zionist Organization</option>
+              <option value="7930">7930 Boys and Girls Club Mentors</option>
+              <option value="7960">7960 Microfinance Connection</option>
+              <option value="7970">7970 Dickinson Community Players</option>
+              <option value="8080">8080 Voices Against Violence</option>
+              <option value="8090">8090 Women in Business</option>
+              <option value="8095">8095 Spoon Magazine</option>
+              <option value="8100">8100 SHADES</option>
+              <option value="8105">8105 Slam Poetry Club</option>
+              <option value="8110">8110 IDEAS for Binghamton</option>
+              <option value="8115">8115 Pre-SOMA</option>
+              <option value="8120">8120 Arabic Association</option>
+              <option value="8125">8125 Foundations</option>
+              <option value="8130">8130 Interfaith Council</option>
+              <option value="8135">8135 Marketing Association</option>
+              <option value="8140">8140 Men of Color Scholastic Society</option>
+              <option value="8145">8145 Biological Science Club</option>
+              <option value="8150">8150 Education Club</option>
+              <option value="8155">8155 Comic Club</option>
+              <option value="8160">8160 Sports Debate</option>
+              <option value="8170">8170 Glee Club</option>
+              <option value="8175">8175 Meditation Club</option>
+              <option value="8180">8180 Future Business Leaders of America</option>
+              <option value="8185">8185 Thai Cultural Awareness</option>
+              <option value="8190">8190 Video Game Association</option>
+              <option value="8195">8195 Students for Sensible Drug Policy</option>
+              <option value="8200">8200 Wishmakers on Campus</option>
+              <option value="8205">8205 Peace Action</option>
+              <option value="8212">8212 She's the First</option>
+              <option value="8215">8215 Speech and Language Association</option>
+              <option value="8220">8220 Car Club</option>
+              <option value="8225">8225 Production & Mixing</option>
+              <option value="8235">8235 American Medical Women's Association</option>
+              <option value="8245">8245 Consulting Club</option>
+              <option value="8250">8250 Spirit in the Box</option>
+              <option value="8255">8255 Quimbamba</option>
+              <option value="8260">8260 L.O.C.K.S.</option>
+              <option value="8265">8265 Rocket Club</option>
+              <option value="8270">8270 Hula Hooping Club</option>
+              <option value="8275">8275 Kurdish Student Union fka American Kurdish Council</option>
+              <option value="8280">8280 Operation Smile</option>
+              <option value="8281">8281 Roosevelt Institute</option>
+              <option value="8285">8285 Veterans Student Organization</option>
+              <option value="8300">8300 China Care Club</option>
+              <option value="8310">8310 Film Salon</option>
+              <option value="8315">8315 Hinman Production Company</option>
+              <option value="8320">8320 Universities Allied for Essential Medicines</option>
+              <option value="8330">8330 Fine Arts Society</option>
+              <option value="8335">8335 Evolutionary Studies Student Organization</option>
+              <option value="8345">8345 Active Minds</option>
+              <option value="8350">8350 Student Alliance for Local Living Economies</option>
+              <option value="8355">8355 American Sign Language Club</option>
+              <option value="8360">8360 Pediatric Cancer Awareness</option>
+              <option value="8370">8370 Bookworms (The)</option>
+              <option value="8375">8375 BU Science</option>
+              <option value="8380">8380 Polish Student Association</option>
+              <option value="8385">8385 Global Medical Brigades</option>
+              <option value="8390">8390 Scholars for Soldiers</option>
+              <option value="8395">8395 Undergraduate Art History Association</option>
+              <option value="8400">8400 State of Mind</option>
+              <option value="8405">8405 Angels of the Amazon</option>
+              <option value="8415">8415 Sunny Binghamton</option>
+              <option value="8420">8420 Corazon De Dahlia</option>
+              <option value="8425">8425 Students for Educational Reform</option>
+              <option value="8430">8430 Autism Speaks</option>
+              <option value="8435">8435 MEDLIFE</option>
+              <option value="8440">8440 Page Turners</option>
+              <option value="8445">8445 Fellowship of Christion Athletes</option>
+              <option value="8450">8450 Harpur Vocal Jazz</option>
+              <option value="8455">8455 American Parliamentary Debate Association</option>
+              <option value="8460">8460 Advertising Group</option>
+              <option value="8465">8465 J Street U</option>
+              <option value="8470">8470 Dorm Room Diplomacy</option>
+              <option value="8475">8475 Paranormal Association</option>
+              <option value="8480">8480 Deeds for Diabetes</option>
+              <option value="8485">8485 KONECT</option>
+              <option value="8490">8490 Mechanical Contractors Association of America</option>
+              <option value="8495">8495 Chanbara</option>
+              <option value="8500">8500 SA INK</option>
+              <option value="9100">9100 Business Replacement</option>
+              <option value="9110">9110 Capital Replacement</option>
+              <option value="9120">9120 Discretionary Fund</option>
+              <option value="9130">9130 Fundraising Supplement</option>
+              <option value="9199">9199 FinCo Allocations (Capital/Business Replacment)</option>
+              <option value="9200">9200 Student Assembly</option>
+              <option value="9202">9202 Student Outreach</option>
+              <option value="9300">9300 Student Association Program Bd</option>
+              <option value="9400">9400 Semi Formal</option>
+              <option value="9410">9410 Leadership Conference</option>
+              <option value="9500">9500 Academic Programming</option>
+              <option value="9510">9510 Academic Readership Program</option>
+              <option value="9600">9600 Intercultural Awareness</option>
+              <option value="9700">9700 Marketing and Publications (MAP) Department</option>
+              <option value="9800">9800 Student Association</option>
+              <option value="9810">9810 E-Board Programming</option>
+              <option value="9850">9850 Deficit Coverage</option>
+              <option value="9860">9860 Advertising Subsidy</option>
+              <option value="9870">9870 Rollover Adj</option>
+              <option value="9880">9880 Relay for Life</option>
+              <option value="9890">9890 SA Gives</option>
+            </select>
+        <label for="paytolabel">Pay to</label>
+        <input type="text" name="payto" class="form-control" id="paytoid" placeholder="Pay to name">
+        <label for="addresslabel">Address</label>
+        <input type="text" name="addressline" class="form-control" id="addressline" placeholder="Enter Address">
+        <label for="citystateziplabel">City, State, Zip</label>
+        <input type="text" name="citystatezip" class="form-control" id="citystatezip" placeholder="Enter city, state, zip">
+        <label for="phonenumberlabel">Phone Number</label>
+        <input type="text" name="phonenumber" class="form-control" id="phonenumber" placeholder="0000000000">
+        <label for="emailidlabel">Your Email Id</label>
+        <input type="email" name="emailid" class="form-control" id="emailid" placeholder="abc@example.com">
+      </div>
+      <br>
+      <br>
+
+      <div class="container" style="background-color:#D3D3D3;padding:1em;">
+        <label for="selectdeliverytype">Select Delivery Type</label>
+        <select id="deliverytype" class="form-control" name="selectdeliverytype" onchange="showdeliverytype(this)">
+             <option value='Nothing'></option>
+             <option value="Vendor Payment">Vendor Payment</option>
+             <option value="Reimbursement">Reimbursement</option>
+             <option value="Transfer">Transfer</option>
+        </select>
+        <br>
+
+        <select id="paymenttype" class="form-control" name="selectpayment" onchange="showpaymenttype(this)">
+             <option value='Nothing'>Select Payment Type</option>
+             <option value="Pick Up By">Pick up By</option>
+             <option value="Mail To Payee">Mail to payee</option>
+        </select>
+        <br>
+        <input type="text" name="pickupby" class="form-control" id="pub" placeholder="Pick Up By">
+
+            <select id="transferpayment" class="form-control" name="selecttransferpayment">
+                <option value='0000'>Select organization</option>
+                <option value="1000">1000 SA Operating Account</option>
+                <option value="1001">1001 SA Payroll</option>
+                <option value="4000">4000 Black Dance Repertoire</option>
+                <option value="4010">4010 Student Psychological Association</option>
+                <option value="4020">4020 Animation Club</option>
+                <option value="4030">4030 Binghamton Crosbys</option>
+                <option value="4040">4040 Black Student Union</option>
+                <option value="4050">4050 Mock Trial Club</option>
+                <option value="4060">4060 American Society of Mechanical Engineering</option>
+                <option value="4100">4100 Harpur Harpeggios</option>
+                <option value="4160">4160 Harpur's Ferry Student Volunteer Ambulance</option>
+                <option value="4170">4170 High Hopes Crisis Intervention</option>
+                <option value="4200">4200 Circle K</option>
+                <option value="4210">4210 ESCAPE Bus Company</option>
+                <option value="4220">4220 Latin American Student Union</option>
+                <option value="4250">4250 Ballroom Dance Association</option>
+                <option value="4260">4260 Explorchestra</option>
+                <option value="4270">4270 Pipe Dream</option>
+                <option value="4290">4290 Pre-Medical Association</option>
+                <option value="4300">4300 Hillel-Jewish Student Union</option>
+                <option value="4320">4320 Candid Photography Club</option>
+                <option value="4330">4330 Fashion Industry Club</option>
+                <option value="4340">4340 Rhythm Method</option>
+                <option value="4360">4360 Hindu Student Council</option>
+                <option value="4370">4370 Harpur Jazz Project</option>
+                <option value="4390">4390 Bert Mitchell Minority Management</option>
+                <option value="4430">4430 Rotaract</option>
+                <option value="4440">4440 Piano Society</option>
+                <option value="4450">4450 Equality Project (The)</option>
+                <option value="4470">4470 Harpur Radio Workshop</option>
+                <option value="4490">4490 Women's Student Union</option>
+                <option value="4530">4530 College In The Woods Council</option>
+                <option value="4540">4540 Hinman College Council</option>
+                <option value="4550">4550 Newing College Council</option>
+                <option value="4560">4560 Off Campus College Community (OC3)</option>
+                <option value="4570">4570 New York Public Interest Research Group</option>
+                <option value="4575">4575 One World</option>
+                <option value="4590">4590 Dickinson Town Council</option>
+                <option value="4600">4600 Undergraduate Anthropology Organization</option>
+                <option value="4610">4610 Rainbow Pride Union</option>
+                <option value="4620">4620 Hellenic Cultural Society</option>
+                <option value="4640">4640 Psi Chi, National Honor Society</option>
+                <option value="4650">4650 Art Co-op</option>
+                <option value="4660">4660 African Student Organization</option>
+                <option value="4675">4675 Alzheimer's Foundation of America On Campus</option>
+                <option value="4680">4680 Pre-Optometry Association</option>
+                <option value="4700">4700 Caribbean Student Association</option>
+                <option value="4710">4710 Cosplay Club</option>
+                <option value="4715">4715 Helping Chintsa</option>
+                <option value="4720">4720 Pakistani Students Association</option>
+                <option value="4725">4725 The Pappy Parker Players</option>
+                <option value="4730">4730 OCC Transport</option>
+                <option value="4740">4740 Partners in Health</option>
+                <option value="4750">4750 Nursing Students Association</option>
+                <option value="4760">4760 Student Volunteer Center</option>
+                <option value="4765">4765 History Club</option>
+                <option value="4770">4770 Zombie Student Association</option>
+                <option value="4780">4780 Hong Kong Exchange Square</option>
+                <option value="4790">4790 Powerful United Ladies Striving to Elevate</option>
+                <option value="4800">4800 Muslim Student Association</option>
+                <option value="4810">4810 Binghamton Television</option>
+                <option value="4820">4820 SUNY Kids</option>
+                <option value="4830">4830 Pre-Physician Assistant Society</option>
+                <option value="4870">4870 Women Empowered Support, Protect, Educate, Advocate and Know</option>
+                <option value="4910">4910 SHINE</option>
+                <option value="4920">4920 Students of Urban Planning</option>
+                <option value="4930">4930 Transfer Student Association</option>
+                <option value="5010">5010 German Club</option>
+                <option value="5015">5015 Get Reel Fishing Club</option>
+                <option value="5020">5020 Human Development Association</option>
+                <option value="5050">5050 Society for Human Resource Management</option>
+                <option value="5060">5060 Bhangra</option>
+                <option value="5065">5065 Billiards Club</option>
+                <option value="5090">5090 Undergraduate Chemical Society</option>
+                <option value="5100">5100 Korean Undergraduate Student Association</option>
+                <option value="5140">5140 MASTI</option>
+                <option value="5180">5180 Nutrition and Fitness Club</option>
+                <option value="5190">5190 Blacks, Latinos, Asians, & Caucasians Keeping Unity</option>
+                <option value="5200">5200 Media Group</option>
+                <option value="5210">5210 Diverse Cultural Excellence</option>
+                <option value="5220">5220 Tommorrow's Hope in North Korea</option>
+                <option value="5230">5230 Ascend</option>
+                <option value="5240">5240 Evolution Dance Company</option>
+                <option value="5250">5250 Tap That</option>
+                <option value="5260">5260 Biochemistry Club</option>
+                <option value="5270">5270 SUNY VINES</option>
+                <option value="5280">5280 Gaming Group</option>
+                <option value="5290">5290 Circus Arts Association</option>
+                <option value="5310">5310 Korean American Baptist Student Organization</option>
+                <option value="5320">5320 Korean American Christian Fellowship</option>
+                <option value="5330">5330 Sikh Association</option>
+                <option value="5370">5370 Scrabble Club</option>
+                <option value="5380">5380 Taste Buds</option>
+                <option value="5390">5390 SnoCats Ski & Snowboard Club</option>
+                <option value="5410">5410 College Republicans</option>
+                <option value="5430">5430 UNICEF</option>
+                <option value="5440">5440 Mountainview College Council</option>
+                <option value="5470">5470 Imagination Craft Works</option>
+                <option value="5480">5480 Binghamton Prospect Magazine</option>
+                <option value="5500">5500 Givology</option>
+                <option value="5510">5510 Sigma Alpha Lambda</option>
+                <option value="5515">5515 Binghamton Buddies</option>
+                <option value="5530">5530 Brothers and Sisters in Christ</option>
+                <option value="5550">5550 Casino in the Woods Committee</option>
+                <option value="5560">5560 Koinonia</option>
+                <option value="5610">5610 Irish Student Union</option>
+                <option value="5620">5620 Poker Club</option>
+                <option value="5650">5650 Chabad</option>
+                <option value="5670">5670 Intervarsity Christian Fellow</option>
+                <option value="5690">5690 Student Design Agency</option>
+                <option value="5720">5720 Turkish Culture Association</option>
+                <option value="5740">5740 Association of Latino Professionals in Finance and Accountin</option>
+                <option value="5745">5745 Astronomy Club</option>
+                <option value="5779">5779 APICS - Association for Operations Mgmt</option>
+                <option value="5780">5780 International Entertainment Club</option>
+                <option value="5790">5790 Sul Poong</option>
+                <option value="5810">5810 Model United Nations Team</option>
+                <option value="5820">5820 Pep Band</option>
+                <option value="5825">5825 Engineering World Health</option>
+                <option value="5825">5825 Engineering World Health</option>
+                <option value="5830">5830 Enactus</option>
+                <option value="5850">5850 Engineers Without Borders</option>
+                <option value="5940">5940 Treblemakers</option>
+                <option value="5950">5950 Meor</option>
+                <option value="5970">5970 Colleges Against Cancer</option>
+                <option value="6070">6070 Intramural Sports</option>
+                <option value="6080">6080 Russian Student Union</option>
+                <option value="6110">6110 Habitat For Humanity</option>
+                <option value="6140">6140 Binghamton Vibrations</option>
+                <option value="6150">6150 Asian Student Union</option>
+                <option value="6170">6170 Chinese Christian Fellowship</option>
+                <option value="6190">6190 Charles Drew Minority Pre-Health Society</option>
+                <option value="6210">6210 Animal Alliance</option>
+                <option value="6220">6220 Susquehanna Community Council</option>
+                <option value="6230">6230 No Strings Attached</option>
+                <option value="6250">6250 Indian InternationaI Student Union</option>
+                <option value="6260">6260 Math Club</option>
+                <option value="6290">6290 Convocations</option>
+                <option value="6310">6310 Informations Systems Club</option>
+                <option value="6330">6330 Semper Fi Society</option>
+                <option value="6360">6360 American Red Cross Club</option>
+                <option value="6380">6380 Dzidefo Africa Choir</option>
+                <option value="6390">6390 Collectible Card Game Association</option>
+                <option value="6400">6400 Senior Class Council</option>
+                <option value="6410">6410 Junior Class Council</option>
+                <option value="6420">6420 Sophmore Class Council</option>
+                <option value="6430">6430 Freshman Class Council</option>
+                <option value="6440">6440 Finance Society</option>
+                <option value="6510">6510 Mary E. Mahoney Nursing Support Group</option>
+                <option value="6530">6530 Chess Club</option>
+                <option value="6550">6550 Hilarity for Charity</option>
+                <option value="6580">6580 Pre-Veterinary Society</option>
+                <option value="6590">6590 College Democrats</option>
+                <option value="6610">6610 Institute of Electrical and Electronics Engineers</option>
+                <option value="6630">6630 French Club</option>
+                <option value="6650">6650 Gospel Choir</option>
+                <option value="6660">6660 Ellipsis Literary Magazine</option>
+                <option value="6670">6670 Italian Club</option>
+                <option value="6690">6690 Student Environmental Action Coalition</option>
+                <option value="6710">6710 Stand Up</option>
+                <option value="6720">6720 International Flag Dancers</option>
+                <option value="6800">6800 Amnesty International</option>
+                <option value="6840">6840 Haitian Student Association</option>
+                <option value="6850">6850 Friendly Lunch</option>
+                <option value="6860">6860 Binghamton Review</option>
+                <option value="6880">6880 Guitar Club</option>
+                <option value="6910">6910 Speech and Debate</option>
+                <option value="6920">6920 Student United Way of Binghamton</option>
+                <option value="6990">6990 Actuarial Association</option>
+                <option value="7040">7040 Personal Finance Association</option>
+                <option value="7050">7050 National Society of Black Engineers</option>
+                <option value="7070">7070 Society of Asian Scientists and Engineers</option>
+                <option value="7080">7080 Philosophy of Science Club</option>
+                <option value="7090">7090 Chinascope</option>
+                <option value="7130">7130 Binghamtonics</option>
+                <option value="7140">7140 Economics Club</option>
+                <option value="7160">7160 Food Co-Op</option>
+                <option value="7170">7170 International Connection</option>
+                <option value="7180">7180 Live Action Role Playing Club</option>
+                <option value="7200">7200 College Progressives</option>
+                <option value="7220">7220 Society of Hispanic Professional Engineers</option>
+                <option value="7240">7240 Team Sunrise</option>
+                <option value="7270">7270 KnitWits</option>
+                <option value="7280">7280 Origami Club</option>
+                <option value="7290">7290 X=Factor Step Team</option>
+                <option value="7300">7300 Spanish Club</option>
+                <option value="7310">7310 Secular Student Alliance</option>
+                <option value="7315">7315 S.E.L.F.</option>
+                <option value="7330">7330 Nukporfe African Dance - Drumm</option>
+                <option value="7350">7350 March of Dimes</option>
+                <option value="7360">7360 Pre Dental Association</option>
+                <option value="7370">7370 Poverty Awareness Coalition</option>
+                <option value="7380">7380 Hillside Village Council</option>
+                <option value="7400">7400 Binghamton Sound Stage & Lighting</option>
+                <option value="7420">7420 Thurgood Marshall Pre-Law Soc.</option>
+                <option value="7450">7450 Society of Automotive Engineers</option>
+                <option value="7480">7480 Juvenile Urban Multiculture Program</option>
+                <option value="7520">7520 Society of Women Engineers</option>
+                <option value="7530">7530 Neuroscience Club</option>
+                <option value="7540">7540 Newman Association</option>
+                <option value="7570">7570 Club Sports</option>
+                <option value="7590">7590 Late Night Binghamton</option>
+                <option value="7610">7610 BU Association of Mixed Students</option>
+                <option value="7620">7620 BU Zoo (The)</option>
+                <option value="7640">7640 Philosophy Club</option>
+                <option value="7660">7660 Global Education Investment</option>
+                <option value="7810">7810 Democracy Matters</option>
+                <option value="7840">7840 Campus Climate Challenge</option>
+                <option value="7850">7850 College Libertarians</option>
+                <option value="7880">7880 Zionist Organization</option>
+                <option value="7930">7930 Boys and Girls Club Mentors</option>
+                <option value="7960">7960 Microfinance Connection</option>
+                <option value="7970">7970 Dickinson Community Players</option>
+                <option value="8080">8080 Voices Against Violence</option>
+                <option value="8090">8090 Women in Business</option>
+                <option value="8095">8095 Spoon Magazine</option>
+                <option value="8100">8100 SHADES</option>
+                <option value="8105">8105 Slam Poetry Club</option>
+                <option value="8110">8110 IDEAS for Binghamton</option>
+                <option value="8115">8115 Pre-SOMA</option>
+                <option value="8120">8120 Arabic Association</option>
+                <option value="8125">8125 Foundations</option>
+                <option value="8130">8130 Interfaith Council</option>
+                <option value="8135">8135 Marketing Association</option>
+                <option value="8140">8140 Men of Color Scholastic Society</option>
+                <option value="8145">8145 Biological Science Club</option>
+                <option value="8150">8150 Education Club</option>
+                <option value="8155">8155 Comic Club</option>
+                <option value="8160">8160 Sports Debate</option>
+                <option value="8170">8170 Glee Club</option>
+                <option value="8175">8175 Meditation Club</option>
+                <option value="8180">8180 Future Business Leaders of America</option>
+                <option value="8185">8185 Thai Cultural Awareness</option>
+                <option value="8190">8190 Video Game Association</option>
+                <option value="8195">8195 Students for Sensible Drug Policy</option>
+                <option value="8200">8200 Wishmakers on Campus</option>
+                <option value="8205">8205 Peace Action</option>
+                <option value="8212">8212 She's the First</option>
+                <option value="8215">8215 Speech and Language Association</option>
+                <option value="8220">8220 Car Club</option>
+                <option value="8225">8225 Production & Mixing</option>
+                <option value="8235">8235 American Medical Women's Association</option>
+                <option value="8245">8245 Consulting Club</option>
+                <option value="8250">8250 Spirit in the Box</option>
+                <option value="8255">8255 Quimbamba</option>
+                <option value="8260">8260 L.O.C.K.S.</option>
+                <option value="8265">8265 Rocket Club</option>
+                <option value="8270">8270 Hula Hooping Club</option>
+                <option value="8275">8275 Kurdish Student Union fka American Kurdish Council</option>
+                <option value="8280">8280 Operation Smile</option>
+                <option value="8281">8281 Roosevelt Institute</option>
+                <option value="8285">8285 Veterans Student Organization</option>
+                <option value="8300">8300 China Care Club</option>
+                <option value="8310">8310 Film Salon</option>
+                <option value="8315">8315 Hinman Production Company</option>
+                <option value="8320">8320 Universities Allied for Essential Medicines</option>
+                <option value="8330">8330 Fine Arts Society</option>
+                <option value="8335">8335 Evolutionary Studies Student Organization</option>
+                <option value="8345">8345 Active Minds</option>
+                <option value="8350">8350 Student Alliance for Local Living Economies</option>
+                <option value="8355">8355 American Sign Language Club</option>
+                <option value="8360">8360 Pediatric Cancer Awareness</option>
+                <option value="8370">8370 Bookworms (The)</option>
+                <option value="8375">8375 BU Science</option>
+                <option value="8380">8380 Polish Student Association</option>
+                <option value="8385">8385 Global Medical Brigades</option>
+                <option value="8390">8390 Scholars for Soldiers</option>
+                <option value="8395">8395 Undergraduate Art History Association</option>
+                <option value="8400">8400 State of Mind</option>
+                <option value="8405">8405 Angels of the Amazon</option>
+                <option value="8415">8415 Sunny Binghamton</option>
+                <option value="8420">8420 Corazon De Dahlia</option>
+                <option value="8425">8425 Students for Educational Reform</option>
+                <option value="8430">8430 Autism Speaks</option>
+                <option value="8435">8435 MEDLIFE</option>
+                <option value="8440">8440 Page Turners</option>
+                <option value="8445">8445 Fellowship of Christion Athletes</option>
+                <option value="8450">8450 Harpur Vocal Jazz</option>
+                <option value="8455">8455 American Parliamentary Debate Association</option>
+                <option value="8460">8460 Advertising Group</option>
+                <option value="8465">8465 J Street U</option>
+                <option value="8470">8470 Dorm Room Diplomacy</option>
+                <option value="8475">8475 Paranormal Association</option>
+                <option value="8480">8480 Deeds for Diabetes</option>
+                <option value="8485">8485 KONECT</option>
+                <option value="8490">8490 Mechanical Contractors Association of America</option>
+                <option value="8495">8495 Chanbara</option>
+                <option value="8500">8500 SA INK</option>
+                <option value="9100">9100 Business Replacement</option>
+                <option value="9110">9110 Capital Replacement</option>
+                <option value="9120">9120 Discretionary Fund</option>
+                <option value="9130">9130 Fundraising Supplement</option>
+                <option value="9199">9199 FinCo Allocations (Capital/Business Replacment)</option>
+                <option value="9200">9200 Student Assembly</option>
+                <option value="9202">9202 Student Outreach</option>
+                <option value="9300">9300 Student Association Program Bd</option>
+                <option value="9400">9400 Semi Formal</option>
+                <option value="9410">9410 Leadership Conference</option>
+                <option value="9500">9500 Academic Programming</option>
+                <option value="9510">9510 Academic Readership Program</option>
+                <option value="9600">9600 Intercultural Awareness</option>
+                <option value="9700">9700 Marketing and Publications (MAP) Department</option>
+                <option value="9800">9800 Student Association</option>
+                <option value="9810">9810 E-Board Programming</option>
+                <option value="9850">9850 Deficit Coverage</option>
+                <option value="9860">9860 Advertising Subsidy</option>
+                <option value="9870">9870 Rollover Adj</option>
+                <option value="9880">9880 Relay for Life</option>
+                <option value="9890">9890 SA Gives</option>
+              </select>
+
+
+
+        <p></p>
+        <label for="personalservice">Personal Service</label>
+        <select id="personalservice?" class="form-control" name="selectpersonalservice" onchange="selectpservice(this)">
+             <option value="No">No</option>
+             <option value="Yes">Yes</option>
+        </select>
+        <br>
+        <select id="personalservicefor?" class="form-control" name="selectpersonalservicefor">
+              <option value="N/A">Select personal service</option>
+             <option value="1. Stipends/Office/Clerical">1. Stipends/Office/Clerical</option>
+             <option value="2. Legal/Speakers/Performers/Message">2. Legal/Speakers/Performers/Message</option>
+             <option value="3. Productions/Security/Crew">3. Productions/Security/Crew</option>
+             <option value="4. Ebgineering(WHRW/BTV)">4. Ebgineering(WHRW/BTV)</option>
+             <option value="5. OCCT Bus Cleaning">5. OCCT Bus Cleaning</option>
+             <option value="6. Delivery - Pipe Dream Pubs">6. Delivery - Pipe Dream Pubs</option>
+        </select>
+        <p></p>
+
+        <label for="fundraisedexpense">Fundraised Expense</label>
+        <select id="fundraisedexpense?" class="form-control" name="selectfundraisedexexpense">
+             <option value="No">No</option>
+             <option value="Yes">Yes</option>
+        </select>
+        <p></p>
+
+        <label for="purchaseorder">Purchase Order</label>
+        <select id="purchaseorder?" class="form-control" name="selectpurchaseorder">
+             <option value="No">No</option>
+             <option value="Yes">Yes</option>
+        </select>
+        <p></p>
+
+        <label>A</label>
+        <input type="text" name="a" class="form-control" id="a?" placeholder="A value">
+        <p></p>
+
+        <label for="vender_1099label">Purchase Order</label>
+        <select id="vender1099?" class="form-control" name="selectvender1099">
+             <option value="No">No</option>
+             <option value="Yes">Yes</option>
+        </select>
+
+      </div>
+      <br>
+      <br>
+
+
+
+      <div class="container">
+        <h3>Expense Table</h3>
+        <table class="table table-bordered">
+          <tr>
+            <th>Expense Type</th>
+            <th>Expense Invoice#</th>
+            <th>Expense Description</th>
+            <th>Date</th>
+            <th>Amount</th>
+          </tr>
+          <tr>
+          <td><select id="selectexpense1" class="form-control" name="selectexpensetype1">
+                         <option value="N/A">N/A</option>
+                         <option value="5000">5000 Office - Advertising/Printing/Etc.</option>
+                         <option value="5010">5010 Office - Food</option>
+                         <option value="5020">5020 Office - Gifts (Seniors/advisors/etc)</option>
+                         <option value="5030">5030 Office - Miscellaneous Supplies</option>
+                         <option value="5040">5040 Office - Bank Fees</option>
+                         <option value="5100">5100 Equipment/Supplies</option>
+                         <option value="5200">5200 Clothing/Uniforms</option>
+                         <option value="5300">5300 Medical Supplies</option>
+                         <option value="5400">5400 Payroll - Admin</option>
+                         <option value="5410">5410 Payroll - Student Employment</option>
+                         <option value="5420">5420 Stipends</option>
+                         <option value="5500">5500 Telephone</option>
+                         <option value="5600">5600 Insurance</option>
+                         <option value="5605">5605 Insurance - HF</option>
+                         <option value="5700">5700 Legal Fees</option>
+                         <option value="5705">5705 Legal Clinics</option>
+                         <option value="5710">5710 Auditing Fees</option>
+                         <option value="5720">5720 Bookkeeping Fees</option>
+                         <option value="5725">5725 Admin Fees</option>
+                         <option value="5730">5730 IT Support</option>
+                         <option value="5750">5750 Tax Expense</option>
+                         <option value="5800">5800 Training Cost</option>
+                         <option value="5801">5801 CPR Training</option>
+                         <option value="5802">5802 Training Conference - HF</option>
+                         <option value="6000">6000 Events - Advertising/Printing/Etc.</option>
+                         <option value="6100">6100 Events - Food</option>
+                         <option value="6200">6200 Events - Gifts/Prizes/Favors</option>
+                         <option value="6300">6300 Events - Miscellaneuos Expense</option>
+                         <option value="6400">6400 Events - Clothing/Uniforms</option>
+                         <option value="6500">6500 Events - Staffing(Univ/Campus Life/Event Ctr/etc)</option>
+                         <option value="6600">6600 Events - Rentals/Decorations/etc.</option>
+                         <option value="6700">6700 Events - Entertainer/Speaker/etc.</option>
+                         <option value="6800">6800 Events - Entertainment (rides/etc)</option>
+                         <option value="7000">7000 Travel - Transportation</option>
+                         <option value="7100">7100 Travel - Lodging</option>
+                         <option value="7200">7200 Travel - Fuel</option>
+                         <option value="7300">7300 Travel - Registration Fees</option>
+                         <option value="7500">7500 Co-Sponsorship</option>
+                         <option value="7400">7400 Donations</option>
+                         <option value="7900">7900 Other Expense</option>
+                         <option value="8000">8000 Vehicles - Registration</option>
+                         <option value="8200">8200 Vehicles - Repairs & Maintainence</option>
+                         <option value="8100">8100 Vehicles - Fuel</option>
+                         <option value="8201">8201 Oxygen - HF</option>
+                         <option value="8202">8202 Stretchers and Lifepak Maintainence - HF</option>
+                         <option value="8203">8203 Radios and Technology - HF</option>
+                         <option value="8204">8204 Software - HF</option>
+                         <option value="8300">8300 Vehicles - Purchase</option>
+                         <option value="8400">8400 Depreciation</option>
+                         <option value="9000">9000 Transfers</option>
+                         <option value="8500">8500 University Support - Expense</option>
+                </select>
+            </td>
+            <td><input type="text" name="invoice1" value="#0"></td>
+            <td><textarea id="limit1" name="description1" value="N/A"></textarea></td>
+            <td><input type="text" name='date1' class="datepicker dat1" maxlength="8" value="01/01/17"></td>
+            <td><input type="text" name="amount1" value="00"></td>
+          </tr>
+          <tr>
+            <td><select id="selectexpense2" class="form-control" name="selectexpensetype2">
+                           <option value="N/A">N/A</option>
+                           <option value="5000">5000 Office - Advertising/Printing/Etc.</option>
+                           <option value="5010">5010 Office - Food</option>
+                           <option value="5020">5020 Office - Gifts (Seniors/advisors/etc)</option>
+                           <option value="5030">5030 Office - Miscellaneous Supplies</option>
+                           <option value="5040">5040 Office - Bank Fees</option>
+                           <option value="5100">5100 Equipment/Supplies</option>
+                           <option value="5200">5200 Clothing/Uniforms</option>
+                           <option value="5300">5300 Medical Supplies</option>
+                           <option value="5400">5400 Payroll - Admin</option>
+                           <option value="5410">5410 Payroll - Student Employment</option>
+                           <option value="5420">5420 Stipends</option>
+                           <option value="5500">5500 Telephone</option>
+                           <option value="5600">5600 Insurance</option>
+                           <option value="5605">5605 Insurance - HF</option>
+                           <option value="5700">5700 Legal Fees</option>
+                           <option value="5705">5705 Legal Clinics</option>
+                           <option value="5710">5710 Auditing Fees</option>
+                           <option value="5720">5720 Bookkeeping Fees</option>
+                           <option value="5725">5725 Admin Fees</option>
+                           <option value="5730">5730 IT Support</option>
+                           <option value="5750">5750 Tax Expense</option>
+                           <option value="5800">5800 Training Cost</option>
+                           <option value="5801">5801 CPR Training</option>
+                           <option value="5802">5802 Training Conference - HF</option>
+                           <option value="6000">6000 Events - Advertising/Printing/Etc.</option>
+                           <option value="6100">6100 Events - Food</option>
+                           <option value="6200">6200 Events - Gifts/Prizes/Favors</option>
+                           <option value="6300">6300 Events - Miscellaneuos Expense</option>
+                           <option value="6400">6400 Events - Clothing/Uniforms</option>
+                           <option value="6500">6500 Events - Staffing(Univ/Campus Life/Event Ctr/etc)</option>
+                           <option value="6600">6600 Events - Rentals/Decorations/etc.</option>
+                           <option value="6700">6700 Events - Entertainer/Speaker/etc.</option>
+                           <option value="6800">6800 Events - Entertainment (rides/etc)</option>
+                           <option value="7000">7000 Travel - Transportation</option>
+                           <option value="7100">7100 Travel - Lodging</option>
+                           <option value="7200">7200 Travel - Fuel</option>
+                           <option value="7300">7300 Travel - Registration Fees</option>
+                           <option value="7500">7500 Co-Sponsorship</option>
+                           <option value="7400">7400 Donations</option>
+                           <option value="7900">7900 Other Expense</option>
+                           <option value="8000">8000 Vehicles - Registration</option>
+                           <option value="8200">8200 Vehicles - Repairs & Maintainence</option>
+                           <option value="8100">8100 Vehicles - Fuel</option>
+                           <option value="8201">8201 Oxygen - HF</option>
+                           <option value="8202">8202 Stretchers and Lifepak Maintainence - HF</option>
+                           <option value="8203">8203 Radios and Technology - HF</option>
+                           <option value="8204">8204 Software - HF</option>
+                           <option value="8300">8300 Vehicles - Purchase</option>
+                           <option value="8400">8400 Depreciation</option>
+                           <option value="9000">9000 Transfers</option>
+                           <option value="8500">8500 University Support - Expense</option>
+                  </select>
+              </td>
+            <td><input type="text" name="invoice2" value="#0"></td>
+            <td><textarea id="limit2" name="description2" value="N/A"></textarea></td>
+            <td><input type="text" name='date2' class="datepicker dat2" maxlength="8" value="01/01/17"></td>
+            <td><input type="text" name="amount2" value="00"></td>
+          </tr>
+          <tr>
+            <td><select id="selectexpense3" class="form-control" name="selectexpensetype3">
+                           <option value="N/A">N/A</option>
+                           <option value="5000">5000 Office - Advertising/Printing/Etc.</option>
+                           <option value="5010">5010 Office - Food</option>
+                           <option value="5020">5020 Office - Gifts (Seniors/advisors/etc)</option>
+                           <option value="5030">5030 Office - Miscellaneous Supplies</option>
+                           <option value="5040">5040 Office - Bank Fees</option>
+                           <option value="5100">5100 Equipment/Supplies</option>
+                           <option value="5200">5200 Clothing/Uniforms</option>
+                           <option value="5300">5300 Medical Supplies</option>
+                           <option value="5400">5400 Payroll - Admin</option>
+                           <option value="5410">5410 Payroll - Student Employment</option>
+                           <option value="5420">5420 Stipends</option>
+                           <option value="5500">5500 Telephone</option>
+                           <option value="5600">5600 Insurance</option>
+                           <option value="5605">5605 Insurance - HF</option>
+                           <option value="5700">5700 Legal Fees</option>
+                           <option value="5705">5705 Legal Clinics</option>
+                           <option value="5710">5710 Auditing Fees</option>
+                           <option value="5720">5720 Bookkeeping Fees</option>
+                           <option value="5725">5725 Admin Fees</option>
+                           <option value="5730">5730 IT Support</option>
+                           <option value="5750">5750 Tax Expense</option>
+                           <option value="5800">5800 Training Cost</option>
+                           <option value="5801">5801 CPR Training</option>
+                           <option value="5802">5802 Training Conference - HF</option>
+                           <option value="6000">6000 Events - Advertising/Printing/Etc.</option>
+                           <option value="6100">6100 Events - Food</option>
+                           <option value="6200">6200 Events - Gifts/Prizes/Favors</option>
+                           <option value="6300">6300 Events - Miscellaneuos Expense</option>
+                           <option value="6400">6400 Events - Clothing/Uniforms</option>
+                           <option value="6500">6500 Events - Staffing(Univ/Campus Life/Event Ctr/etc)</option>
+                           <option value="6600">6600 Events - Rentals/Decorations/etc.</option>
+                           <option value="6700">6700 Events - Entertainer/Speaker/etc.</option>
+                           <option value="6800">6800 Events - Entertainment (rides/etc)</option>
+                           <option value="7000">7000 Travel - Transportation</option>
+                           <option value="7100">7100 Travel - Lodging</option>
+                           <option value="7200">7200 Travel - Fuel</option>
+                           <option value="7300">7300 Travel - Registration Fees</option>
+                           <option value="7500">7500 Co-Sponsorship</option>
+                           <option value="7400">7400 Donations</option>
+                           <option value="7900">7900 Other Expense</option>
+                           <option value="8000">8000 Vehicles - Registration</option>
+                           <option value="8200">8200 Vehicles - Repairs & Maintainence</option>
+                           <option value="8100">8100 Vehicles - Fuel</option>
+                           <option value="8201">8201 Oxygen - HF</option>
+                           <option value="8202">8202 Stretchers and Lifepak Maintainence - HF</option>
+                           <option value="8203">8203 Radios and Technology - HF</option>
+                           <option value="8204">8204 Software - HF</option>
+                           <option value="8300">8300 Vehicles - Purchase</option>
+                           <option value="8400">8400 Depreciation</option>
+                           <option value="9000">9000 Transfers</option>
+                           <option value="8500">8500 University Support - Expense</option>
+                  </select>
+              </td>
+            <td><input type="text" name="invoice3" value="#0"></td>
+            <td><textarea id="limit3" name="description3" value="N/A"></textarea></td>
+            <td><input type="text" name='date3' class="datepicker dat3" maxlength="8" value="01/01/17"></td>
+            <td><input type="text" name="amount3" value="00"></td>
+          </tr>
+          <tr>
+            <td><select id="selectexpense4" class="form-control" name="selectexpensetype4">
+                           <option value="N/A">N/A</option>
+                           <option value="5000">5000 Office - Advertising/Printing/Etc.</option>
+                           <option value="5010">5010 Office - Food</option>
+                           <option value="5020">5020 Office - Gifts (Seniors/advisors/etc)</option>
+                           <option value="5030">5030 Office - Miscellaneous Supplies</option>
+                           <option value="5040">5040 Office - Bank Fees</option>
+                           <option value="5100">5100 Equipment/Supplies</option>
+                           <option value="5200">5200 Clothing/Uniforms</option>
+                           <option value="5300">5300 Medical Supplies</option>
+                           <option value="5400">5400 Payroll - Admin</option>
+                           <option value="5410">5410 Payroll - Student Employment</option>
+                           <option value="5420">5420 Stipends</option>
+                           <option value="5500">5500 Telephone</option>
+                           <option value="5600">5600 Insurance</option>
+                           <option value="5605">5605 Insurance - HF</option>
+                           <option value="5700">5700 Legal Fees</option>
+                           <option value="5705">5705 Legal Clinics</option>
+                           <option value="5710">5710 Auditing Fees</option>
+                           <option value="5720">5720 Bookkeeping Fees</option>
+                           <option value="5725">5725 Admin Fees</option>
+                           <option value="5730">5730 IT Support</option>
+                           <option value="5750">5750 Tax Expense</option>
+                           <option value="5800">5800 Training Cost</option>
+                           <option value="5801">5801 CPR Training</option>
+                           <option value="5802">5802 Training Conference - HF</option>
+                           <option value="6000">6000 Events - Advertising/Printing/Etc.</option>
+                           <option value="6100">6100 Events - Food</option>
+                           <option value="6200">6200 Events - Gifts/Prizes/Favors</option>
+                           <option value="6300">6300 Events - Miscellaneuos Expense</option>
+                           <option value="6400">6400 Events - Clothing/Uniforms</option>
+                           <option value="6500">6500 Events - Staffing(Univ/Campus Life/Event Ctr/etc)</option>
+                           <option value="6600">6600 Events - Rentals/Decorations/etc.</option>
+                           <option value="6700">6700 Events - Entertainer/Speaker/etc.</option>
+                           <option value="6800">6800 Events - Entertainment (rides/etc)</option>
+                           <option value="7000">7000 Travel - Transportation</option>
+                           <option value="7100">7100 Travel - Lodging</option>
+                           <option value="7200">7200 Travel - Fuel</option>
+                           <option value="7300">7300 Travel - Registration Fees</option>
+                           <option value="7500">7500 Co-Sponsorship</option>
+                           <option value="7400">7400 Donations</option>
+                           <option value="7900">7900 Other Expense</option>
+                           <option value="8000">8000 Vehicles - Registration</option>
+                           <option value="8200">8200 Vehicles - Repairs & Maintainence</option>
+                           <option value="8100">8100 Vehicles - Fuel</option>
+                           <option value="8201">8201 Oxygen - HF</option>
+                           <option value="8202">8202 Stretchers and Lifepak Maintainence - HF</option>
+                           <option value="8203">8203 Radios and Technology - HF</option>
+                           <option value="8204">8204 Software - HF</option>
+                           <option value="8300">8300 Vehicles - Purchase</option>
+                           <option value="8400">8400 Depreciation</option>
+                           <option value="9000">9000 Transfers</option>
+                           <option value="8500">8500 University Support - Expense</option>
+                  </select>
+              </td>
+            <td><input type="text" name="invoice4" value="#0"></td>
+            <td><textarea id="limit4" name="description4" value="N/A"></textarea></td>
+            <td><input type="text" name='date4' class="datepicker dat4" maxlength="8" value="01/01/17"></td>
+            <td><input type="text" name="amount4" value="00"></td>
+          </tr>
+        </table>
+      </div>
+
+      {% csrf_token %}
+      <div style="float:right;margin:1em;">
+          <input type="submit" class="btn btn-primary btn-lg" value="Submit">
+      </div>
+
+    </form>
+
+  </body>
+</html>

@@ -1,0 +1,697 @@
+@page {
+    size: auto;
+    margin: 0mm;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+}
+
+#errorMessage {
+    position: absolute;
+    top: 450px;
+    left: 0px;
+    font-size: 60px;
+    text-align: center;
+    width: 860px;
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+	z-index: 5;
+    display: none;
+}
+
+div.ui-datepicker {
+    font-size: 14px;
+}
+
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    background-color: white;
+    padding-left: 5px;
+}
+
+p {
+    margin: 0;
+}
+
+#limit1, #limit2, #limit3, #limit4, #limit5, #limit6 {
+    overflow: hidden !important;
+    resize: none !important;
+    width: 100%;
+    height: 49px;
+    border: none;
+    font-size: 12px;
+}
+
+input[type="text"], input[type="number"], select {
+    border: none;
+    resize: none;
+    background-color: white;
+    border-radius: 3px;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+label div {
+    display: inline-block;
+}
+
+input + div > img {
+    display: none;
+}
+
+.background {
+    z-index: 0;
+    position: absolute;
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #2a2a2a;
+}
+
+textarea {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+#html {
+    padding-top: 65px;
+    padding-bottom: 15px;
+}
+
+#body {
+    width: 860px;
+    height: 1070px;
+    border: 1px solid black; /*was 2px*/
+    background-color: white;
+    margin: auto;
+    position: relative;
+}
+
+.printOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 62px;
+    background-color: white;
+    z-index: 3;
+    border-bottom: 3px solid #2a2a2a;
+}
+
+.printOverlay button {
+    height: 40px;
+    width: 170px;
+    font-size: 20px;
+    position: fixed;
+    top: 10px;
+}
+
+#printbutton {
+    right: 15px;
+}
+
+#savebutton {
+    right: 200px;
+    display: none;
+}
+
+#clearbutton {
+    right: 385px;
+    display: none;
+}
+
+#logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 150px;
+    height: 100px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+.paymentType table, .background-paymentType {
+    position: absolute;
+    top: 30px;
+    left: 190px;
+    width: 450px;
+    height: 100px;
+}
+
+.paymentType th, .paymentType td {
+    border: 1px solid black; /*was 2px*/
+}
+
+.paymentType tr td:first-child {
+    width: 140px;
+}
+
+
+.paymentType .transferOrganization {
+    width: 290px;
+    height: 25px;
+    margin: 5px 5px 0px 5px;
+}
+
+.paymentType label div {
+    display: inline-block;
+}
+
+.paymentType .psSelect {
+    width: 170px;
+    padding-left: 6px;
+    border-left: 1px solid white;
+}
+
+.paymentType .psSelect select {
+    width: 155px;
+    height: 15px;
+    font-size: 10px;
+}
+
+#currentDate {
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.internalUse, .background-internalUse {
+    position: absolute;
+    top: 30px;
+    left: 650px;
+    width: 180px;
+    height: 100px;
+}
+
+.internalUse {
+    border: 1px solid black; /*was 2px*/
+    font-size: 12px;
+}
+
+.internalUse div {
+    display: inline-block;
+    margin-top: 4px;
+}
+
+.internalUse input {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.internalUse table {
+    margin: auto;
+    margin-top: 5px;
+}
+
+.internalUse th {
+    font-size: 10px;
+}
+
+.addressBox, .background-addressBox {
+    position: absolute;
+    top: 140px;
+    left: 30px;
+    width: 475px;
+    height: 165px;
+}
+
+.addressBox {
+    padding: 10px;
+    border: 1px solid black; /*was 2px*/
+}
+
+.addressBox table {
+    height: 100%;
+    width: 100%;
+}
+
+.addressBox td, .addressBox input {
+    font-size: 14px;
+}
+
+.addressBox table tr td:first-child {
+    width: 110px;
+}
+
+.addressBox span {
+    font-size: 18px;
+}
+
+.addressBox td input {
+    width: 100%;
+    border: none;
+}
+
+#payto {
+    font-weight: bold;
+}
+
+.organizationBox, .background-organizationBox {
+    position: absolute;
+    top: 140px;
+    left: 515px;
+    width: 315px;
+    height: 122px;
+}
+
+.organizationBox {
+    padding: 10px;
+    border: 1px solid black; /*was 2px*/
+}
+
+.organizationBox select {
+    height: calc(100% - 27px);
+    width: 100%;
+    margin-top: 8px;
+}
+
+.mailTo, .background-mailTo, .translucent-mailTo {
+    position: absolute;
+    top: 315px;
+    left: 30px;
+    width: 120px;
+    height: 33px;
+}
+
+
+.translucent-mailTo, .translucent-pickUpName {
+	opacity: .7;
+}
+
+
+.mailTo {
+    border: 1px solid black; /*was 2px*/
+    padding: 4px 3px 2px 3px;
+}
+
+.pickUpName, .background-pickUpName, .translucent-pickUpName {
+    position: absolute;
+    top: 315px;
+    left: 80px;
+    width: 600px;
+    height: 33px;
+}
+
+.pickUpName {
+    border: 1px solid black; /*was 2px*/
+    padding: 4px 3px 2px 3px;
+}
+
+.pickUpName input[type="text"] {
+    font-size: 12px;
+    width: 185px;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+/*
+.pickUpName div, .separateCheck + div, .mailTo div, .purchaseOrder div, .fundraised div, .total div {
+    margin-top: 2px;
+}
+*/
+
+.pickUpNameDisclaimer div:first-child {
+    position: absolute;
+    top: 320px;
+    left: 465px;
+    height: 33px;
+    font-size: 18px;
+}
+
+.pickUpNameDisclaimer div:nth-child(2) {
+    position: absolute;
+    top: 320px;
+    left: 487px;
+    height: 33px;
+    width: 120px;
+    font-size: 9px;
+}
+
+.fundraised, .background-fundraised {
+    position: absolute;
+    top: 272px;
+    left: 660px;
+    width: 170px;
+    height: 33px;
+}
+
+.fundraised {
+    border: 1px solid black; /*was 2px*/
+    padding: 4px 6px;
+}
+
+.separateCheck, .background-separateCheck {
+    position: absolute;
+    top: 272px;
+    left: 515px;
+    width: 135px;
+    height: 33px;
+}
+
+hr{
+  color: black;
+  background-color: black;
+
+}
+.separateCheck {
+    border: 1px solid black; /*was 2px*/
+    padding: 4px 5px;
+}
+
+.purchaseOrder {
+    border: 1px solid black; /*was 2px*/
+    padding: 4px;
+}
+
+.purchaseOrder, .background-purchaseOrder {
+    position: absolute;
+    top: 315px;
+    left: 600px;
+    width: 230px;
+    height: 33px;
+}
+
+.purchaseOrder div {
+    display: inline-block;
+}
+
+.purchaseOrder div input[type="text"], .purchaseOrder span {
+    font-size: 14px;
+}
+
+.purchaseOrder input[type="text"] {
+    width: 70px;
+}
+
+.itemTable table, .background-itemTableHeader {
+    position: absolute;
+    top: 358px;
+    left: 30px;
+    width: 800px;
+}
+
+.itemTable table {
+    height: 350px;
+    border: 1px solid black; /*was 2px*/
+}
+
+.itemTable table th {
+    height: 30px;
+    text-align: center;
+}
+
+.itemTable table th, .itemTable table td {
+    border: 1px solid black;
+}
+
+.itemTable table th:first-child, .itemTable table td:first-child {
+    width: 200px;
+}
+
+.itemTable table th:nth-child(2), .itemTable table td:nth-child(2) {
+    width: 100px;
+}
+
+.itemTable table th:nth-child(3), .itemTable table td:nth-child(3) {
+    width: 350px;
+}
+
+.itemTable table th:nth-child(4), .itemTable table td:nth-child(4) {
+    width: 75px;
+}
+
+.itemTable table th:nth-child(5), .itemTable table td:nth-child(5) {
+    width: 75px;
+}
+
+.itemTable table td:nth-child(4) input, .itemTable table td:nth-child(5) input {
+    width: 75px;
+}
+
+.itemTable table td:nth-child(4) input {
+    text-align: center;
+}
+
+.itemTable table td:nth-child(5) input {
+    text-align: right;
+}
+
+.itemTable input, .itemTable select {
+    width: 100%;
+    height: 45px;
+    padding: 0;
+    margin: 0;
+}
+
+.background-itemTableHeader {
+    height: 30px;
+}
+
+.total, .background-total {
+    position: absolute;
+    top: 730px;
+    left: 590px;
+    width: 240px;
+    height: 40px;
+}
+
+.total {
+    padding: 6px;
+    border: 1px solid black; /*was 2px*/
+    font-size: 16px;
+}
+
+.total input[type="text"] {
+    font-size: 18px;
+    width: 175px;
+    color: #c10505;
+    font-weight: bold;
+    text-align: right;
+}
+
+.payeeSig {
+    position: absolute;
+    top: 770px;
+    left: 30px;
+    width: 370px;
+}
+
+.orgSig {
+    position: absolute;
+    top: 770px;
+    left: 460px;
+    width: 370px;
+}
+
+.fvpSig {
+    position: absolute;
+    top: 920px;
+    left: 30px;
+    width: 370px;
+}
+
+.udSig {
+    position: absolute;
+    top: 920px;
+    left: 460px;
+    width: 370px;
+}
+
+.payeeSig hr:first-child, .orgSig hr:first-child, .fvpSig hr:first-child, .udSig hr:first-child {
+    margin-top: 45px;
+}
+
+.payeeSig hr:nth-child(2), .orgSig hr:nth-child(2), .fvpSig hr:nth-child(2), .udSig hr:nth-child(2) {
+    margin-top: 20px;
+}
+
+.payeeSig hr, .orgSig hr, .fvpSig hr, .udSig hr {
+    border-top: 1px solid black;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.payeeSig, .orgSig, .fvpSig, .udSig {
+    font-size: 10px;
+}
+
+.dateline {
+    width: 200px;
+}
+
+.payeeSig p, .orgSig p, .fvpSig p, .udSig p {
+    text-align: right;
+    margin-right: 180px;
+}
+
+.separator {
+    position: absolute;
+    top: 905px;
+    left: 30px;
+    width: 800px;
+    height: 2px;
+    color: black;
+    background-color: black;
+}
+
+.approval, .commitment {
+    font-size: 10px;
+}
+
+.approval {
+    position: absolute;
+    top: 907px;
+    left: 30px;
+}
+
+.commitment {
+    position: absolute;
+    top: 912px;
+    left: 350px;
+}
+
+.terms {
+    position: absolute;
+    top: 880px;
+    left: 29px;
+    font-size: 11px;
+}
+
+@-moz-document url-prefix() {
+    input + div > img {
+        display: inherit;
+    }
+
+    input[type="checkbox"], input[type="radio"] {
+        display: none;
+    }
+
+    input[type="checkbox"] + div img:after, input[type="radio"] + div img:after  {
+        content: url(../media/input/sd/unchecked.png);
+        padding: 3px 3px 0px 5px;
+        display: inline-block;
+    }
+
+    input[type="checkbox"]:checked + div img:after {
+        content: url(../media/input/sd/checked.png);
+        padding: 3px 3px 0px 5px;
+    }
+
+    input[type="radio"]:checked + div img:after {
+        content: url(../media/input/sd/radio.png);
+        padding: 3px 3px 0px 5px;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0), print and (-webkit-min-device-pixel-ratio:0) {
+    input[type="checkbox"], input[type="radio"] {
+        display: none;
+    }
+
+    input[type="checkbox"] + div, input[type="radio"] + div  {
+        background-position: left 4px center;
+        background-size: 14px 14px;
+        background-repeat: no-repeat;
+        padding-left: 22px;
+
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    input[type="radio"] + div:hover {
+        background-image: url(../media/input/hd/half_radio.png);
+    }
+
+    input[type="checkbox"] + div:hover {
+        background-image: url(../media/input/hd/half_checked.png);
+    }
+
+    input[type="radio"]:checked + div {
+        background-image :url("../media/input/hd/radio.png");
+    }
+
+    input[type="checkbox"] + div, input[type="radio"] + div {
+       background-image: url(../media/input/hd/unchecked.png);
+    }
+
+    input[type="checkbox"]:checked + div {
+        background-image: url(../media/input/hd/checked.png);
+    }
+
+    label div {
+        padding-top: 3px;
+    }
+
+    .paymentType label div {
+        padding-top: 0px;
+    }
+}
+
+@media print {
+    #html {
+        margin: 0px;
+        padding: 0px;
+        background-color: white;
+    }
+
+    body {
+        background-color: white;
+    }
+
+    #body {
+        border: none;
+        margin-top: 0;
+        margin-bottom: 0;
+        height: 1000px;
+    }
+
+    .printOverlay {
+        display: none;
+    }
+
+	.translucent-mailTo, .translucent-pickUpName {
+		z-index: 0;
+	}
+
+    .separator:before {
+        border: 99999px black solid;
+    }
+
+    .separator {
+         overflow: hidden;
+    }
+
+    .separator:before {
+         content: '';
+         position: absolute;
+         top: 0;
+         right: 0;
+         left: 0;
+         bottom: 0;
+         z-index: 0;
+    }
+
+    #errorMessage {
+        display: inherit;
+    }
+}
+
+/* I hate Firefox. It doesn't print background images. I spent hours writing bad code because Firefox is stupid*/

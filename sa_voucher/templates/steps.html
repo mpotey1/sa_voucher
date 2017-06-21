@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>Steps for the forms</title>
+  </head>
+  <body>
+    <br>
+    <div class="text-center">
+        <img src="{%static "images/SA_Logo_Voucher.png"%}" class="rounded" >
+        <br><br><br><br>
+        <button type="button" class="btn btn-primary btn-lg">Please go through the following steps for filling up a voucher:</button>
+        <br><br>
+        <button type="button" class="btn btn-default btn-lg">1. Fill up the voucher request form.</button>
+        <br><br>
+        <button type="button" class="btn btn-default btn-lg">2. Save/print the filled template form.</button>
+        <br><br>
+        <button type="button" class="btn btn-default btn-lg">3. On getting acceptance mail, take the printed form to the treasurer office and submit it.</button>
+        <br><br><br><br>
+        <div style="padding:10%;">
+          <a href="/voucher_transaction/" class="btn btn-primary btn-lg" style="float:left;padding">Go back to main menu</a>
+          <a href="/voucher_transaction/" class="btn btn-primary btn-lg" style="float:right;padding">Go to the voucher form</a>
+        </div>
+
+
+    </div>
+
+
+  </body>
+</html>

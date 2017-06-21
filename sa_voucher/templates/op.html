@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html moznomarginboxes mozdisallowselectionprint>
+<head>
+<style></style>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="{% static "css/style.css"  %}">
+    <script type="text/javascript" src="{%static "script/script.js"%}"></script>
+</head>
+
+<body>
+    <div id="html">
+    <div id="body">
+        <div class="printOverlay">
+            <button id="printbutton" onclick="printPage()">Print this Form</button>
+            <button id="savebutton" onclick="savePage()">Save this Form</button>
+            <button id="clearbutton" onclick="resetPage()">Clear Form</button>
+        </div>
+
+        <p>Id - {{m.id}}</p>
+        <img src="{%static "images/SA_Logo_Voucher.png"%}" id="logo">
+        <img src="{%static "images/lightgray.png"%}" class="background background-paymentType">
+        <div class="paymentType">
+            <table>
+                <tr>
+                    <td>
+                        <label>
+
+                            <div><img>Payment Type</div>
+                        </label>
+                    </td>
+                    <td rowspan="2" colspan="2">
+                        <label>
+
+                            <div><img>{{m.deliverytype}}</div>
+                            <hr>
+                            <div><img>{{m.paymentoption}}&nbsp;&nbsp;{{m.paymentargument}}</div>
+                        </label><br>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <div><img> Payment Option</div>
+                        </label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <label>
+                            <div><img>Personal Service</div>
+                        </label>
+                    </td>
+                    <td class="psSelect">
+                        {{m.personalservicetype}}
+                    </td>
+                    <td>
+                        <span id="currentDate"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <img src="{%static "images/darkgray.png"%}" class="background background-internalUse">
+        <div class="internalUse">
+            <label>
+                <div><img>  1099 Vendor - {{m.vender1099}}</div><br>
+            </label>
+            <table>
+                <th colspan="2">Internal Use Only</th>
+                <tr>
+                    <td>Date #</td>
+                    <td>_________________</td>
+                </tr>
+                <tr>
+                    <td>Check #</td>
+                    <td>_________________</td>
+                </tr>
+                <tr>
+                    <td>Batch #</td>
+                    <td>_________________</td>
+                </tr>
+            </table>
+        </div>
+        <img src="{%static "images/lightgray.png"%}" class="background background-addressBox">
+        <div class="addressBox">
+            <table>
+                <tr>
+                    <label><td><span><strong><em>Pay to</em></strong></span></td>
+                    <td>{{m.payto}}</label>
+                </tr>
+                <tr>
+                    <label><td>Address Line</td>
+                    <td>{{m.address}}</td></label>
+                </tr>
+                <tr>
+                    <label><td>City, State, Zip</td>
+                    <td>{{m.citystatezip}}</td></label>
+                </tr>
+                <tr>
+                    <td>Phone Number</td><td>{{m.phonenumber}}</td>
+                </tr>
+            </table>
+        </div>
+        <img src="{%static "images/lightgray.png"%}" class="background background-organizationBox">
+        <div class="organizationBox">
+            <span>Your Organization</span><br>
+            <br>
+            {{m.organization}}
+        </div>
+
+
+
+        <div class="itemTable">
+            <table>
+                <tr>
+                    <th>Expense Type</th>
+                    <th>Invoice #</th>
+                    <th>Description</th>
+                    <th>Event Date</th>
+                    <th>Amount</th>
+                </tr>
+                <tr>
+                    <td>{{m.expensetype1}}</td>
+                    <td>{{m.expenseinvoice1}}</td>
+                    <td>{{m.expensedescription1}}</td>
+                    <td>{{m.expensedate1}}</td>
+                    <td>{{m.expenseamount1}}</td>
+                </tr>
+                <tr>
+                    <td>{{m.expensetype2}}</td>
+                    <td>{{m.expenseinvoice2}}</td>
+                    <td>{{m.expensedescription2}}</td>
+                    <td>{{m.expensedate2}}</td>
+                    <td>{{m.expenseamount2}}</td>
+                </tr>
+                <tr>
+                    <td>{{m.expensetype3}}</td>
+                    <td>{{m.expenseinvoice3}}</td>
+                    <td>{{m.expensedescription3}}</td>
+                    <td>{{m.expensedate3}}</td>
+                    <td>{{m.expenseamount3}}</td>
+                </tr>
+                <tr>
+                    <td>{{m.expensetype4}}</td>
+                    <td>{{m.expenseinvoice4}}</td>
+                    <td>{{m.expensedescription4}}</td>
+                    <td>{{m.expensedate4}}</td>
+                    <td>{{m.expenseamount4}}</td>
+                </tr>
+            </table>
+        </div>
+        <img src="{%static "images/lightgray.png"%}" class="background background-fundraised">
+        <div class="fundraised">
+            <div> Fundraised Expense - {{m.fundraisedexpense}}</div>
+        </div>
+        <img src="{%static "images/lightgray.png"%}" class="background background-purchaseOrder">
+        <div class="purchaseOrder">
+             Purchase Order - {{m.purchaseorder}}
+            <div><label><span>&nbsp;&nbsp;&nbsp;A - {{m.a}}</span></label></div>
+        </div>
+        <img src="{%static "images/lightgray.png"%}" class="background background-total">
+        <div class="total">
+            <div>Total:&nbsp;&nbsp;{{m.expensetotal}}</div>
+        </div>
+        <div class="payeeSig">
+            <hr>
+            Payee Signature
+            <hr class="dateline" align="right">
+            <p>Date</p>
+        </div>
+        <div class="orgSig">
+            <hr>
+            Organization Approval - Treasurer/President Signature
+            <hr class="dateline" align="right">
+            <p>Date</p>
+        </div>
+        <div class="separator"></div>
+        <div class="approval">Student Association Approval</div>
+        <div class="commitment">This commitment complies with SUNY Board of Trustees policy. It is not a fiscal obligation of the State of New York.</div>
+        <div class="fvpSig">
+            <hr>
+            Financial Vice President
+            <hr class="dateline" align="right">
+            <p>Date</p>
+        </div>
+        <div class="udSig">
+            <hr>
+            University Designee
+            <hr class="dateline" align="right">
+            <p>Date</p>
+        </div>
+        <div class="terms">I hereby certify that the above expenses were incurred by me for the purpose stated; that the information given is correct, and that no part thereof has been paid except stated.</div>
+        <div id="errorMessage"></div>
+    </div>
+    </div>
+</body>
+</html>
